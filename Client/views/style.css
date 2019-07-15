@@ -5,19 +5,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.chat {
-    
+@media only screen and (max-width:768px) {
+    .users {
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-bottom: 10px !important;
+    }
 }
 
-.user-list {
-    background-color: #eee;
-    margin-right: 15px;
-    overflow: hidden;
-}
-
-.user-list * {
-    padding: 0;
-    margin: 2px;
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 form { 
@@ -32,27 +30,15 @@ form input {
     margin-right: .5%; 
 }
 
-form button { 
-    width: 9%; 
-    background: rgb(130, 224, 255); 
-    border: none; 
-    padding: 10px; 
-    margin-left: 2%; 
-}
-
 #messages { 
+    scrollbar-width: none;
     height: 500px;
     overflow-y: scroll;
-    list-style-type: none;
     margin: 0; 
     padding: 0; 
 }
 
-#messages li { 
-    padding: 5px 10px; 
-}
-
-#messages li:nth-child(odd) { background: #eee; }
+#messages li:nth-child(odd) {}
 
 #messages .red {
     color: red;

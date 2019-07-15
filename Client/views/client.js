@@ -3,6 +3,9 @@ let serverUrl = "http://35.183.42.174:8080";
 let socket = io.connect(serverUrl);
 let usernameSet = false;
 
+/* Li format to use for messages */
+let listStyle = "<li class='list-group-item pl-3 p-1'>";
+
 /*
  * On new chat message event:
  * Update the chat box with the new chat message 
@@ -37,7 +40,7 @@ socket.on('is_online', function(username) {
  * Returns HTML for a new message that can be used to append to the chat box
  */
 function craftMsgHTML(username, message) {
-    return "<li class='list-group-item'><strong>" + username + "</strong>: " + message + "</li>";
+    return listStyle + "<strong>" + username + "</strong>: " + message + "</li>";
 }
 
 /*
@@ -46,7 +49,7 @@ function craftMsgHTML(username, message) {
 function craftUserListHTML(userList) {
     let listHTML = "";
     for(let i = 0; i < userList.length; i++) {
-        listHTML += userList[i] + "<hr/>";
+        listHTML += "<li class='list-group-item list-group-item-light pt-0 pb-0 lh-condensed'>" + userList[i] + "</li>";
     }
     return listHTML;
 }
@@ -56,7 +59,7 @@ function craftUserListHTML(userList) {
  */
 function craftStatusMsg(username, isOnline) {
     let userStatus = (isOnline) ? 'online' : 'offline';
-    return "<li class='list-group-item'>" + username + " is now " + userStatus + ".</li>";
+    return listStyle + username + " is now " + userStatus + ".</li>";
 }
 
 /*
